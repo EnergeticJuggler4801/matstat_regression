@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.io.*;
 import java.math.*;
-import java.util.Arrays;
 
 public class Main {
 
