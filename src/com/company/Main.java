@@ -48,6 +48,13 @@ public class Main {
         return sumSquare / 100;
     }
 
+    public static String rounding(double a) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        String result = decimalFormat.format(a);
+        return result;
+
+    }
+
     public static void main(String[] args) {
         double[] x = new double[6];
         double[] y = new double[8];
@@ -106,7 +113,7 @@ public class Main {
         decimalFormat = new DecimalFormat("#.##");
         String result = decimalFormat.format((y[2] - y[1]));
         System.out.println("\nu = (x - " + x[indexOfMax(vx)] + ")/" + (x[2] - x[1]));
-        System.out.println("v = (y - " + y[indexOfMax(vy)] + ")/" + result);
+        System.out.println("v = (y - " + y[indexOfMax(vy)] + ")/" + rounding(y[2] - y[1]));
 
         System.out.println("\nU:");
         print(u);
@@ -132,7 +139,7 @@ public class Main {
                 vxy[i][j] = vxy[i][j] * v[j];
                 sum = sum + vxy[i][j];
             }
-            System.out.print(sum + "\t");
+            System.out.print(rounding(sum) + "\t");
         }
         System.out.println("");
 
@@ -145,7 +152,7 @@ public class Main {
                 sum = sum + vxy[i][j];
                 sumAll = sumAll + vxy[i][j];
             }
-            System.out.print(sum + "\t");
+            System.out.print(rounding(sum) + "\t");
         }
         double uv_avg = sumAll / 100;
         double xy_avg = (x[2] - x[1]) * (y[2] - y[1]) * uv_avg + (x[2] - x[1]) * y[indexOfMax(vy)] * ch_avg(u, vx) + x[indexOfMax(vx)] * (y[2] - y[1]) * ch_avg(v, vy) + x[indexOfMax(vx)] * y[indexOfMax(vy)];
@@ -167,11 +174,11 @@ public class Main {
         double ost_x = (xy_avg - x_avg * y_avg) * (-1) * x_avg / unfixed_x + y_avg;
         double ost_y = (xy_avg - x_avg * y_avg) * (-1) * y_avg / unfixed_y + x_avg;
 
-        System.out.println("x(y) = " + coef_y + "y + " + ost_y);
-        System.out.println("y(x) = " + coef_x + "x + " + ost_x);
-        System.out.println("\nx(" + y[0] + ") = " + (coef_y * y[0] + ost_y));
-        System.out.println("x(" + y[y.length - 1] + ") = " + (coef_y * y[y.length - 1] + ost_y));
-        System.out.println("\ny(" + x[0] + ") = " + (coef_x * x[0] + ost_x));
-        System.out.println("y(" + x[x.length - 1] + ") = " + (coef_x * x[x.length - 1] + ost_x));
+        System.out.println("x(y) = " + rounding(coef_y) + "y + " + rounding(ost_y));
+        System.out.println("y(x) = " + rounding(coef_x) + "x + " + rounding(ost_x));
+        System.out.println("\nx(" + y[0] + ") = " + rounding(coef_y * y[0] + ost_y));
+        System.out.println("x(" + y[y.length - 1] + ") = " + rounding(coef_y * y[y.length - 1] + ost_y));
+        System.out.println("\ny(" + x[0] + ") = " + rounding(coef_x * x[0] + ost_x));
+        System.out.println("y(" + x[x.length - 1] + ") = " + rounding(coef_x * x[x.length - 1] + ost_x));
     }
 }
