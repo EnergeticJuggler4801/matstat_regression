@@ -103,6 +103,11 @@ public class Main {
             v[i] = (y[i] - y[indexOfMax(vy)]) / (y[2] - y[1]);
         }
 
+        decimalFormat = new DecimalFormat("#.##");
+        String result = decimalFormat.format((y[2] - y[1]));
+        System.out.println("\nu = (x - " + x[indexOfMax(vx)] + ")/" + (x[2] - x[1]));
+        System.out.println("v = (y - " + y[indexOfMax(vy)] + ")/" + result);
+
         System.out.println("\nU:");
         print(u);
         System.out.println("\nV:");
