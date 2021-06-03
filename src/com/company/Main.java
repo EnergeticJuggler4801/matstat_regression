@@ -112,7 +112,7 @@ public class Main {
 
         decimalFormat = new DecimalFormat("#.##");
         String result = decimalFormat.format((y[2] - y[1]));
-        System.out.println("\nu = (x - " + x[indexOfMax(vx)] + ")/" + (x[2] - x[1]));
+        System.out.println("\nu = (x - " + x[indexOfMax(vx)] + ")/" + rounding(x[2] - x[1]));
         System.out.println("v = (y - " + y[indexOfMax(vy)] + ")/" + rounding(y[2] - y[1]));
 
         System.out.println("\nU:");
@@ -123,13 +123,13 @@ public class Main {
         double unfixed_u = (avg_square(u, vx)) - (ch_avg(u, vx) * ch_avg(u, vx));
         double unfixed_v = (avg_square(v, vy)) - (ch_avg(v, vy) * ch_avg(v, vy));
 
-        System.out.println("\n\naverage u: " + ch_avg(u, vx));
-        System.out.println("average square u: " + avg_square(u, vx));
-        System.out.println("unfixed dispersion u: " + unfixed_u);
+        System.out.println("\n\naverage u: " + rounding(ch_avg(u, vx)));
+        System.out.println("average square u: " + rounding(avg_square(u, vx)));
+        System.out.println("unfixed dispersion u: " + rounding(unfixed_u));
 
         System.out.println("\naverage v: " + ch_avg(v, vy));
         System.out.println("average square v: " + avg_square(v, vy));
-        System.out.println("unfixed dispersion v: " + unfixed_v);
+        System.out.println("unfixed dispersion v: " + rounding(unfixed_v));
 
         System.out.println("\nv*Vxy: ");
         double sum;
@@ -165,8 +165,8 @@ public class Main {
         System.out.println("average x: " + x_avg);
         System.out.println("average y: " + y_avg);
         System.out.println("average xy: " + xy_avg);
-        System.out.println("unfixed dispersion x: " + unfixed_x);
-        System.out.println("unfixed dispersion y: " + unfixed_y);
+        System.out.println("unfixed dispersion x: " + rounding(unfixed_x));
+        System.out.println("unfixed dispersion y: " + rounding(unfixed_y));
         System.out.println("");
 
         double coef_x = (xy_avg - x_avg * y_avg) / unfixed_x;
